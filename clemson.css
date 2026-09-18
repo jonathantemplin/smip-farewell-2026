@@ -1,0 +1,258 @@
+/* Clemson University Branding Palette */
+:root {
+  --clemson-orange: #F56600;
+  --clemson-purple: #522D80;
+  --clemson-white: #FFFFFF;
+  --text-dark: #333333;
+  --light-gray: #F4F4F4;
+}
+
+/* GLOBAL SETTINGS */
+.reveal {
+  background-color: transparent;
+  color: var(--text-dark);
+  font-family: 'Trade Gothic Next', 'Roboto', sans-serif; /* Clean sans-serif for slides */
+}
+
+/* Branded background wash applied uniformly to EVERY slide.
+   Per-slide reveal backgrounds are transparent, so this viewport-level
+   gradient shows through on all slides (soft orange glow top-right,
+   purple wash toward the bottom). */
+.reveal-viewport {
+  background:
+    radial-gradient(55% 45% at 90% 10%, rgba(245, 102, 0, 0.10) 0%, rgba(245, 102, 0, 0) 60%),
+    linear-gradient(155deg, #ffffff 0%, #f6edfb 55%, #e6d5f2 100%) !important;
+}
+
+/* HEADERS */
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+  color: var(--clemson-purple);
+  font-family: 'Goudy Old Style', 'Georgia', serif; /* Academic serif for headers */
+  font-weight: bold;
+  text-transform: none; /* Avoid all-caps for better readability */
+  font-size: 1em !important; 
+}
+
+/* ============================================================
+   TITLE SLIDE
+   The Quarto title slide is <section id="title-slide">, not
+   .title-slide, so all title-specific rules target #title-slide.
+   ============================================================ */
+
+/* Turn the title slide into a full-height, left-aligned canvas so the
+   logo (top-left) and accent bar (bottom) can be pinned to the slide
+   edges reliably, while the text block stays vertically centered. */
+.reveal .slides section#title-slide {
+  top: 0 !important;            /* override reveal's JS vertical centering */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  box-sizing: border-box;
+  padding: 165px 5% 80px 6%;    /* top clears the logo, bottom clears the accent bar */
+}
+
+/* Large College of Education logo, pinned to the top-left corner */
+.reveal .slides section#title-slide::before {
+  content: "";
+  position: absolute;
+  top: 46px;
+  left: 6%;
+  width: 460px;
+  max-width: 60%;
+  height: 130px;
+  background-image: url("clemson_coe.png");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: contain;
+}
+
+/* Hide the small persistent corner logo while the title slide is showing
+   (the large top-left logo replaces it there). */
+.reveal:has(section#title-slide.present) .slide-logo {
+  display: none !important;
+}
+
+/* Title */
+.reveal .slides section#title-slide h1.title {
+  color: var(--clemson-purple);
+  font-family: 'Goudy Old Style', 'Georgia', serif;
+  font-weight: bold;
+  font-size: 1.7em !important;
+  line-height: 1.14;
+  margin: 0 0 0.35em 0;
+  max-width: 100%;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* Short orange rule between the title and subtitle */
+.reveal .slides section#title-slide h1.title::after {
+  content: "";
+  display: block;
+  width: 130px;
+  height: 5px;
+  margin-top: 0.5em;
+  background: var(--clemson-orange);
+  border-radius: 3px;
+}
+
+/* Subtitle */
+.reveal .slides section#title-slide .subtitle {
+  color: var(--clemson-orange);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.15em;
+  letter-spacing: 0.01em;
+  margin: 0.35em 0 1.1em 0;
+}
+
+/* Author */
+.reveal .slides section#title-slide .quarto-title-authors,
+.reveal .slides section#title-slide .quarto-title-author,
+.reveal .slides section#title-slide .quarto-title-author-name {
+  display: block;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+}
+
+.reveal .slides section#title-slide .quarto-title-author-name {
+  color: var(--text-dark);
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
+/* Date, rendered as a subtle purple chip */
+.reveal .slides section#title-slide .date {
+  display: inline-block;
+  margin-top: 1em;
+  padding: 0.3em 0.9em;
+  background: rgba(82, 45, 128, 0.08);
+  border-left: 4px solid var(--clemson-orange);
+  border-radius: 4px;
+  color: var(--clemson-purple);
+  font-weight: 600;
+  font-size: 0.95em;
+}
+
+/* ============================================================
+   TALK OUTLINE / AGENDA
+   Numbered orange badges with purple lead-in text.
+   ============================================================ */
+.reveal .talk-outline ol {
+  list-style: none;
+  counter-reset: outline;
+  margin: 0.2em 0 0 0.2em;
+  padding: 0;
+  font-size: 0.95em;
+}
+
+.reveal .talk-outline ol > li {
+  counter-increment: outline;
+  position: relative;
+  list-style: none;
+  padding: 0.15em 0 0.15em 2.6em;
+  margin: 0.55em 0;
+  line-height: 1.35;
+  color: var(--text-dark);
+}
+
+.reveal .talk-outline ol > li::before {
+  content: counter(outline);
+  position: absolute;
+  left: 0;
+  top: 0.05em;
+  width: 1.8em;
+  height: 1.8em;
+  line-height: 1.8em;
+  text-align: center;
+  color: var(--clemson-white);
+  background: var(--clemson-orange);
+  border-radius: 50%;
+  font-family: 'Goudy Old Style', 'Georgia', serif;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(82, 45, 128, 0.25);
+}
+
+.reveal .talk-outline ol > li strong {
+  color: var(--clemson-purple);
+}
+
+/* Slide Titles (h2 usually) */
+.reveal h2 {
+  border-bottom: 2px solid var(--clemson-orange);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  font-size: 1.2em !important; /* Forces the size change */
+}
+
+/* LINKS */
+.reveal a {
+  color: var(--clemson-orange);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.reveal a:hover {
+  color: var(--clemson-purple);
+  text-decoration: underline;
+}
+
+/* LISTS & BULLET POINTS */
+.reveal ul {
+  list-style-type: disc; /* Reverts to standard bullet points */
+  margin-left: 1.5em;    /* Ensures proper indentation */
+  padding-left: 0;
+  color: var(--text-dark);
+  font-size: 0.8em;
+}
+
+.reveal ul ul {
+  list-style-type: circle; /* Nested lists get circle bullets */
+}
+
+/* BLOCKQUOTES */
+.reveal blockquote {
+  background: rgba(82, 45, 128, 0.05); /* Very light purple tint */
+  border-left: 5px solid var(--clemson-orange);
+  color: var(--clemson-purple);
+  padding: 10px 20px;
+  font-style: italic;
+  box-shadow: none;
+  width: 90%;
+}
+
+/* CODE BLOCKS */
+.reveal pre code {
+  background-color: #f0f0f0;
+  border: 1px solid var(--clemson-purple);
+  border-radius: 5px;
+  color: var(--text-dark);
+}
+
+/* FOOTERS / SLIDE NUMBERS */
+.reveal .slide-number {
+  color: var(--clemson-purple);
+  background-color: transparent;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* PROGRESS BAR */
+.reveal .progress {
+  color: var(--clemson-orange);
+}
+
+.reveal .progress span {
+  background-color: var(--clemson-orange);
+}
+
+/* ACCENT COLUMNS */
+/* Use .alert class in markdown like [Text]{.alert} */
+.alert {
+  color: var(--clemson-orange);
+  font-weight: bold;
+}

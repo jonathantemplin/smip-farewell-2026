@@ -1,0 +1,21 @@
+# macOS / R cruft
+.DS_Store
+.Rhistory
+
+# Quarto build artifacts (index.html is the committed, published copy)
+*_files/
+SMiP 2026 Presentation.html
+/.quarto/
+
+# Private / draft materials — intentionally NOT published
+AGENTS.md
+Agentic Coding Assistant.md
+SMiP 2026 Speaker Notes.md
+SMiP 2026 Slides.md
+SMiP Presentation Outline.md
+
+# Unreferenced images (not used in the talk)
+ai-guided-learning-path.png
+sem-agentic-modeling-workspace.png
+claude does hw/homework-progress.png
+claude does hw/homework-summary.png
