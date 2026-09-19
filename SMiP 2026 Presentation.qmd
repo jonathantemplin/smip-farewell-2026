@@ -76,7 +76,7 @@ It understood my existing code enough to populate R functions with my style and 
 
 ## My initial reaction: surely AI changes nothing
 
-![](ai-ostrich-denial.png){fig-align="center" height="650"}
+![](ai-ostrich-denial.png){.r-stretch fig-align="center"}
 
 
 ## So I gave Claude a PhD homework assignment
@@ -91,7 +91,7 @@ Then came an experiment:
 
 :::
 ::: {.column width="55%"}
-![](claude does hw/homework-assignment.png){fig-align="center" height="450"}
+![](claude does hw/homework-assignment.png){fig-align="center" width="100%"}
 :::
 :::
 
@@ -118,7 +118,7 @@ Claude gets an A+:
 
 :::
 ::: {.column width="55%"}
-![](claude does hw/homework-result.png){fig-align="center" height="450"}
+![](claude does hw/homework-result.png){fig-align="center" width="100%"}
 :::
 :::
 
